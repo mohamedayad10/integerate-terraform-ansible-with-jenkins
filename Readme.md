@@ -38,4 +38,8 @@ Configure Jenkins to monitor the Gogs repository for any changes.
 
 ### 8. Provisioning the 3 VMS using terraform 
 
-Integrate terraform with jenkins for Provisioning vms.
+Integrate terraform & ansible with jenkins for Provisioning & configuring the vms.
+
+### Hints ###
+- Create aws access key id * aws secret access key through jenkins credentials.
+- Replace your public ip with the one in dev.tfvars.
