@@ -77,12 +77,9 @@ pipeline {
                         3- Date & time of pipeline execution ${currentDateTime}
                         4- path to docker  image.tar ${dockerImagePath}
                     """,
-                    mimetype: 'text/html'
-                    
-                }
-
+                    mimetype: 'text/html')
             }
+
         }
-    } 
-    
-}
+    }
+} 
