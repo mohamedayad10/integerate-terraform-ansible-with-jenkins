@@ -34,6 +34,7 @@ pipeline {
         stage('Configuring ec2 instance') {
             steps {
                 script {
+                    sleep(time: 30, unit: "SECONDS")
                     def sshKey = "$WORKSPACE/terraform/ssh-file/key.pem"
                     dir('ansible') {
                         sh "sed -i 's/ip/${EC2_PUBLIC_IP}/g' inventory"
@@ -45,7 +46,6 @@ pipeline {
         stage('Deploy docker image to ec2 instance') {
             steps {
                 script {
-                    sleep(time: 60, unit: "SECONDS")
                     def ec2Instance = "ec2-user@${EC2_PUBLIC_IP}"
                     def shellCmd = "docker run -d -p 8080:80 nginx-image:${BUILD_NUMBER}"
                     def privateKey = "terraform/ssh-file/key.pem"
