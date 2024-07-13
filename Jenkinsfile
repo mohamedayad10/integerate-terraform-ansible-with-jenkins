@@ -22,7 +22,7 @@ pipeline {
                 dir('terraform') {
                     sh 'terraform init'
                     sh 'terraform apply -var-file dev.tfvars -auto-approve'
-                    EC2_PUBLIC_IP = sh (
+                    EC2_PUBLIC_IP = sh(
                         script: "terraform output ec2-public-ip"
                         returnStdout: true
                         ).trim()
