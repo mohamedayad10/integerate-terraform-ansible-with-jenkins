@@ -50,10 +50,37 @@ pipeline {
                     def shellCmd = "docker run -d -p 8080:80 nginx-image:${BUILD_NUMBER}"
                     def privateKey = "terraform/ssh-file/key.pem"
                     def tarFile = "docker load -i nginx_${BUILD_NUMBER}.tar"
+                    def DEPLOY_GROUP = "getent group deployG"
                     sh "scp -o StrictHostKeyChecking=no -i ${privateKey} -v nginx_${BUILD_NUMBER}.tar ${ec2Instance}:~"
                     sh "ssh -o StrictHostKeyChecking=no -i ${privateKey} ${ec2Instance} ${tarFile}"
                     sh "ssh -o StrictHostKeyChecking=no -i ${privateKey} ${ec2Instance} ${shellCmd}"
+                    usersInDeploy = sh(
+                script: "ssh -o StrictHostKeyChecking=no -i ${privateKey} ${ec2Instance} ${DEPLOY_GROUP}",
+                returnStdout: true
+               ).trim()
                 }
+            }
+        }
+    }
+    post {
+        always {
+            script {
+              def currentDateTime = new Date().format("yyyy-MM-dd HH:mm:ss")
+              def buildStatus = currentBuild.currentResult
+              def dockerImagePath = "/home/ec2-user/nginx_${BUILD_NUMBER}.tar"
+              emailext(
+                    to: 'mayadhamo@gmail.com',
+                    subject: 'email notification',
+                    body: """
+                        1- pipeline execution status ${buildStatus}
+                        2- list of users in deployG group ${usersInDeploy}
+                        3- Date & time of pipeline execution ${currentDateTime}
+                        4- path to docker  image.tar ${dockerImagePath}
+                    """,
+                    mimetype: 'text/html'
+                    )
+                }
+
             }
         }
     } 
