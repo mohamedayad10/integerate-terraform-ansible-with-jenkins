@@ -49,7 +49,7 @@ pipeline {
                     def ec2Instance = "ec2-user@${EC2_PUBLIC_IP}"
                     def shellCmd = "docker run -d -p 8080:80 nginx-image:${BUILD_NUMBER}"
                     def privateKey = "terraform/ssh-file/key.pem"
-                    def tarFile = "nginx_${BUILD_NUMBER}.tar"
+                    def tarFile = "docker load -i nginx_${BUILD_NUMBER}.tar"
                     sh "scp -o StrictHostKeyChecking=no -i ${privateKey} -v nginx_${BUILD_NUMBER}.tar ${ec2Instance}:~"
                     sh "ssh -o StrictHostKeyChecking=no -i ${privateKey} ${ec2Instance} ${tarFile}"
                     sh "ssh -o StrictHostKeyChecking=no -i ${privateKey} ${ec2Instance} ${shellCmd}"
