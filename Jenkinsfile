@@ -38,7 +38,7 @@ pipeline {
                     def sshKey = "$WORKSPACE/terraform/ssh-file/key.pem"
                     dir('ansible') {
                         sh "sed -i 's/ip/${EC2_PUBLIC_IP}/g' inventory"
-                        sh "ansible-playbook -i inventory.txt InstallApache.yaml --private-key=${sshKey}"
+                        sh "ansible-playbook -i inventory InstallApache.yaml --private-key=${sshKey}"
                 }
                 }
             }
