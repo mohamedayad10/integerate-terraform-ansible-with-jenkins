@@ -72,6 +72,7 @@ pipeline {
                     to: 'mayadhamo@gmail.com',
                     subject: 'email notification',
                     body: """
+                    
                         1- pipeline execution status ${buildStatus}
                         2- list of users in deployG group ${usersInDeploy}
                         3- Date & time of pipeline execution ${currentDateTime}

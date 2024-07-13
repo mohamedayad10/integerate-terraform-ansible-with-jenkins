@@ -23,11 +23,15 @@
 
 - Installing gogs server using bash script.
 
-### 5  Gogs Integration with Jenkins
+### 5. Provisioning the 3 VMS using terraform 
+
+Integrate terraform & ansible with jenkins for Provisioning & configuring the vms.
+
+### 6  Gogs Integration with Jenkins
 
 Integrate Gogs with Jenkins to automate deployment processes triggered by web hooks.
 
-### 6. Creating a Git Repository on Gogs
+### 7. Creating a Git Repository on Gogs
 
 - Develop an Ansible playbook `InstallApache.yml` to automate the installation of Apache on VM3.
 - Develop a Bash script `NotGroupMembers.sh` to list users not in the `deployG` group.
@@ -36,10 +40,15 @@ Integrate Gogs with Jenkins to automate deployment processes triggered by web ho
 
 Configure Jenkins to monitor the Gogs repository for any changes.
 
-### 8. Provisioning the 3 VMS using terraform 
+### 8. CI/CD Pipeline Email Notificatio
 
-Integrate terraform & ansible with jenkins for Provisioning & configuring the vms.
+Configure Jenkins to send an email whether the job successed or failed the body of the mail includes:
+    - Pipeline execution status.
+    - List of users in the "deployG" group.
+    - Date and time of the pipeline execution.
+    - Path to Docker image.tar 
 
 ### Hints ###
 - Create aws access key id & aws secret access key through jenkins credentials.
 - Replace your public ip with the one in dev.tfvars.
+- All bash scripts are in the path terraform/scripts
