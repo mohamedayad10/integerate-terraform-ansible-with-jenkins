@@ -36,11 +36,11 @@ Integrate Gogs with Jenkins to automate deployment processes triggered by web ho
 - Develop an Ansible playbook `InstallApache.yml` to automate the installation of Apache on VM3.
 - Develop a Bash script `NotGroupMembers.sh` to list users not in the `deployG` group.
 
-### 7. CI/CD Pipeline Configuration
+### 8. CI/CD Pipeline Configuration
 
 Configure Jenkins to monitor the Gogs repository for any changes.
 
-### 8. CI/CD Pipeline Email Notificatio
+### 9. CI/CD Pipeline Email Notificatio
 
 Configure Jenkins to send an email whether the job successed or failed the body of the mail includes:
     - Pipeline execution status.
