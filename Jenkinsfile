@@ -78,7 +78,7 @@ pipeline {
                         4- path to docker  image.tar ${dockerImagePath}
                     """,
                     mimetype: 'text/html'
-                    )
+                    
                 }
 
             }
