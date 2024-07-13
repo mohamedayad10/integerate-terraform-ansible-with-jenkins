@@ -1,0 +1,16 @@
+---
+- name: "Install & Start Apache"
+  hosts: app-instance
+  become: yes
+  tasks:
+    - name: install apache
+      dnf:
+        update_cache: yes
+        name: httpd
+        state: latest
+    
+    - name: start apache service
+      service:
+        name: httpd
+        state: started
+        enabled: yes

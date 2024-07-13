@@ -1,0 +1,5 @@
+ansible*
+terraform*
+.gitignore
+Jenkinsfile
+Readme.md
