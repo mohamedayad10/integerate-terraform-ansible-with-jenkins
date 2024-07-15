@@ -40,7 +40,7 @@ Integrate Gogs with Jenkins to automate deployment processes triggered by web ho
 
 Configure Jenkins to monitor the Gogs repository for any changes.
 
-### 9. CI/CD Pipeline Email Notificatio
+### 9. CI/CD Pipeline Email Notification
 
 Configure Jenkins to send an email whether the job successed or failed the body of the mail includes:
     - Pipeline execution status.
