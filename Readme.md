@@ -52,5 +52,4 @@ Configure Jenkins to send an email whether the job successed or failed the body 
 - Create aws access key id & aws secret access key through jenkins credentials.
 - Replace your public ip with the one in dev.tfvars.
 - All bash scripts are in the path terraform/scripts
-- ![image](https://github.com/user-attachments/assets/4e04de74-a216-490c-b1e6-e077875360dd)
 
